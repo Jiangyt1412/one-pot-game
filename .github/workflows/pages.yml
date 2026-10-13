@@ -1,0 +1,44 @@
+name: Publish One Pot Game # 自动发布游戏
+on:
+  push:
+    branches: [main] # 主分支更新时发布
+  workflow_dispatch: # 可重新发布现有版本
+permissions:
+  contents: read # 读取源码
+  pages: write # 发布网站
+  id-token: write # 部署身份
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci # 使用锁定依赖
+      - name: Verify release
+        run: npm run release:check # 版本和素材检查
+      - name: Test
+        run: npm test # 验证游戏和部署路径
+      - name: Build
+        run: npm run build:pages # 构建项目网站并核对离线范围
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      - name: Upload site
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: dist-pages
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5

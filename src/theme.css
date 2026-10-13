@@ -1,4 +1,5 @@
 /* # One shared kitchen theme, with larger active dishes and compact unlock buttons. */
+.release-version{display:block;text-align:center;font-size:10px;color:#aa7e6e;padding:4px 0 10px;letter-spacing:.03em}
 :root{--cream:#fff4df;--ink:#563b3b;--sage:#309fa1;--muted:#aa7e6e;--peach:#ffae8c;--gold:#ffc464}
 body{background:#ddd3bd;color:var(--ink)}
 .app-shell{max-width:460px;color:var(--ink);background:linear-gradient(180deg,#fff2d9 0%,#fff8e9 40%,#ffe9d7 100%)}

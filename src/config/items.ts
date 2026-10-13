@@ -1,4 +1,5 @@
 import type { ItemKind } from '../game/types';
+import { assetUrl } from './assetUrl'; // # Food loading also works below the Pages repository path.
 // # Every food uses a replaceable original food render, never an emoji.
 const definitions: [ItemKind, string, string][] = [
   ['shrimp','鲜虾','#ef896c'], ['dumpling','饺子','#ead5a3'], ['broccoli','西兰花','#77a965'],
@@ -11,7 +12,7 @@ const definitions: [ItemKind, string, string][] = [
   ['cake','蛋糕','#eab5a6'], ['donut','甜甜圈','#c99976'],
   ['sushi','寿司','#ff9652'],['sausage','烤肠','#ef713e'],['grapes','葡萄','#9852bd'],['peach','蜜桃','#ff9d9a'],['ice-pop','雪糕','#f789a5'],
 ];
-export const items = Object.fromEntries(definitions.map(([id,name,color]) => [id,{id,name,color,src:`/assets/items/${id}.webp`}])) as Record<ItemKind,{id:ItemKind;name:string;color:string;src:string}>;
+export const items = Object.fromEntries(definitions.map(([id,name,color]) => [id,{id,name,color,src:assetUrl(`assets/items/${id}.webp`)}])) as Record<ItemKind,{id:ItemKind;name:string;color:string;src:string}>;
 export const itemOrder = definitions.map(d => d[0]);
 export const levelItemOrder: ItemKind[] = ['shrimp','dumpling','broccoli','chicken','mushroom','sushi','sausage','grapes','peach','ice-pop','cabbage','wonton','tofu','fishball','lettuce','crab','beef','lotus','corn','carrot','egg','siu-mai','bun','strawberry','orange','watermelon','cake','donut'];
 

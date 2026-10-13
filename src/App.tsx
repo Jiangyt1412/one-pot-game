@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ChevronRight, CookingPot, Gift, House, LockKeyhole, Play, Settings2, Sparkles, Star, Trophy, Volume2, Waves, Wrench, X } from 'lucide-react';
 import { gameConfig } from './config/gameConfig';
+import { releaseInfo } from './config/release';
 import { getLevel, levels } from './config/levels';
 import { GameEngine } from './game/GameEngine';
 import type { FoodItem, GameEffect, GameSnapshot, ToolKind } from './game/types';
@@ -154,6 +155,7 @@ export function App() {
         <div className="home-hero"><PotCanvas snapshot={homeSnapshot} onPick={()=>{}} reduced={settings.reducedMotion} decorative/></div>
         <div className="home-actions"><button className="primary-button start-button" onClick={()=>{activateAudio();startLevel(saveService.data.highestLevel);}}><Play size={20} fill="currentColor"/>开始游戏<small>第 {saveService.data.highestLevel} 关</small><ChevronRight size={19}/></button><button className="secondary-button" onClick={()=>setPage('levels')}><span className="little-grid">▦</span>关卡<span className="action-meta">{saveService.data.completed.length} / 50</span></button><button className="text-button" onClick={()=>setShowSettings(true)}><Settings2 size={16}/>设置</button></div>
 
+        <small className="release-version">v{releaseInfo.version} · {releaseInfo.status}</small>
       </section>}
       {page==='levels'&&<section className="levels-page"><header className="subpage-header"><button className="icon-button" aria-label="返回首页" onClick={()=>setPage('home')}><ArrowLeft size={21}/></button><h1>关卡</h1><span>{saveService.data.completed.length}/50</span></header><div className="level-grid">{levels.map(l=>{
         const locked=l.level>saveService.data.highestLevel,done=saveService.data.completed.includes(l.level);

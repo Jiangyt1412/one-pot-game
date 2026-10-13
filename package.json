@@ -1,16 +1,20 @@
 {
   "name": "one-pot-game",
   "private": true,
-  "version": "1.8.0",
+  "version": "1.9.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build && node scripts/build-sw.mjs",
+    "build": "tsc -b && vite build && node scripts/build-sw.mjs dist && node scripts/check-build.mjs dist /",
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run",
     "test:levels": "tsx scripts/check-levels.ts",
     "test:browser": "node scripts/browser-tests.mjs",
-    "test:motion": "tsx scripts/audit-motion.ts"
+    "test:motion": "tsx scripts/audit-motion.ts",
+    "build:pages": "tsc -b && vite build --mode pages && node scripts/build-sw.mjs dist-pages && node scripts/check-build.mjs dist-pages /one-pot-game/",
+    "preview:pages": "vite preview --mode pages --host 0.0.0.0",
+    "release:check": "node scripts/check-release.mjs",
+    "media:render": "tsx scripts/render-media.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -26,5 +30,9 @@
     "vitest": "^3.2.0",
     "tsx": "^4.20.0",
     "@playwright/test": "^1.56.0"
+  },
+  "gameRelease": {
+    "date": "2026-10-14",
+    "status": "修订中"
   }
 }

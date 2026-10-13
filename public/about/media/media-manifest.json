@@ -1,0 +1,98 @@
+{
+  "engineVersion": "1.9.0",
+  "date": "2026-10-14",
+  "provenance": "offline-engine-render",
+  "note": "GameEngine and FloatingScene run at normal game time. UI is a Canvas illustration, not a browser screenshot. Automated selections are checked against actual cleaned alpha masks. No audio or microphone test.",
+  "level": 2,
+  "seed": 1412,
+  "fps": 24,
+  "duration": 16,
+  "frames": 384,
+  "events": [
+    {
+      "time": 4,
+      "kind": "mushroom",
+      "itemId": 5,
+      "pixelVerified": true,
+      "point": {
+        "x": 0.3697501238125993,
+        "y": 0.8220608939702152
+      },
+      "effects": [
+        "pick"
+      ]
+    },
+    {
+      "time": 7.208333333333333,
+      "kind": "mushroom",
+      "itemId": 13,
+      "pixelVerified": true,
+      "point": {
+        "x": 0.7462643203549243,
+        "y": 0.46740322761692576
+      },
+      "effects": [
+        "pick"
+      ]
+    },
+    {
+      "time": 10.416666666666666,
+      "kind": "mushroom",
+      "itemId": 4,
+      "pixelVerified": true,
+      "point": {
+        "x": 0.3214318916995794,
+        "y": 0.19392656859930918
+      },
+      "effects": [
+        "pick",
+        "match"
+      ]
+    },
+    {
+      "time": 13.625,
+      "kind": "fishball",
+      "itemId": 67,
+      "pixelVerified": true,
+      "point": {
+        "x": 0.2789353657779717,
+        "y": 0.23471950147043494
+      },
+      "effects": [
+        "pick"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "hero-v1.9.0.jpg",
+      "bytes": 259340,
+      "sha256": "042506442b70c5d46b76a24a24f3c9a22a7d1f0bc764008a008230c0ddf8d5ea"
+    },
+    {
+      "name": "gameplay-v1.9.0.jpg",
+      "bytes": 162889,
+      "sha256": "deee86b57e769d4539f3e9ca1ab7b59a9e4495a85ed14056d6a33ac0c0423efa"
+    },
+    {
+      "name": "gameplay-detail-v1.9.0.jpg",
+      "bytes": 158932,
+      "sha256": "9c580eceaad741d359fd59aaa0a31a0aef102c81aefaa42bc6bbd7fd91f0ffd4"
+    },
+    {
+      "name": "food-guide-v1.9.0.jpg",
+      "bytes": 196002,
+      "sha256": "5524692264955193209a298c2cfddf08aba2011e868678a366b10184dd251693"
+    },
+    {
+      "name": "demo-v1.9.0.mp4",
+      "bytes": 2919374,
+      "sha256": "db71539d112841ae4855f1053565ff9e7d3533bd3146e7aaa80c297d13764023"
+    },
+    {
+      "name": "preview-v1.9.0.gif",
+      "bytes": 1115379,
+      "sha256": "9c11838661e409c462d8435097ce6bbe8a4650c6af81c63c2cc78b0c564dfa91"
+    }
+  ]
+}
