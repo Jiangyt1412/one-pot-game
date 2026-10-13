@@ -1,0 +1,588 @@
+{
+  "version": "1.8.0",
+  "levels": [
+    1,
+    2,
+    25,
+    50
+  ],
+  "seedsPerLevel": 20,
+  "secondsPerScene": 20,
+  "pickAtSeconds": 10,
+  "totalFrames": 192000,
+  "milliseconds": 11266,
+  "canvasReferenceCssPx": 430,
+  "maxIdleStepCssPx": 0.19117048664463482,
+  "maxAfterPickStepCssPx": 0.5644641021488682,
+  "maxTravelCssPx": 119.27021446827693,
+  "maxSampledSameLayerHullPenetrationCssPx": 0.3751719049415497,
+  "maxSampledHullRadius": 0.47800000000000026,
+  "localLayout": {
+    "comparedAtSecondsAfterPick": 3.8,
+    "topNeighbours": 540,
+    "changedOver3Px": 290
+  },
+  "cases": [
+    {
+      "level": 1,
+      "seed": 1,
+      "physicalLayers": 17,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 6
+    },
+    {
+      "level": 1,
+      "seed": 2,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 3,
+      "physicalLayers": 13,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 1,
+      "seed": 4,
+      "physicalLayers": 14,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 6
+    },
+    {
+      "level": 1,
+      "seed": 5,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 6,
+      "physicalLayers": 15,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 1,
+      "seed": 7,
+      "physicalLayers": 15,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 1,
+      "seed": 8,
+      "physicalLayers": 14,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 9,
+      "physicalLayers": 17,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 1,
+      "seed": 10,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 1,
+      "seed": 11,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 12,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 1,
+      "seed": 13,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 14,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 15,
+      "physicalLayers": 16,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 1,
+      "seed": 16,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 1,
+      "seed": 17,
+      "physicalLayers": 13,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 1,
+      "seed": 18,
+      "physicalLayers": 16,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 19,
+      "physicalLayers": 12,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 1,
+      "seed": 20,
+      "physicalLayers": 15,
+      "topNeighbours": 8,
+      "topNeighboursChangedOver3Px": 6
+    },
+    {
+      "level": 2,
+      "seed": 1,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 2,
+      "physicalLayers": 16,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 2,
+      "seed": 3,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 4,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 5,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 6,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 7,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 6
+    },
+    {
+      "level": 2,
+      "seed": 8,
+      "physicalLayers": 15,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 6
+    },
+    {
+      "level": 2,
+      "seed": 9,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 2,
+      "seed": 10,
+      "physicalLayers": 17,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 11,
+      "physicalLayers": 17,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 12,
+      "physicalLayers": 15,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 2,
+      "seed": 13,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 14,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 15,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 2,
+      "seed": 16,
+      "physicalLayers": 14,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 2,
+      "seed": 17,
+      "physicalLayers": 15,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 2,
+      "seed": 18,
+      "physicalLayers": 17,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 2,
+      "seed": 19,
+      "physicalLayers": 15,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 2,
+      "seed": 20,
+      "physicalLayers": 13,
+      "topNeighbours": 7,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 1,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 2,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 25,
+      "seed": 3,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 25,
+      "seed": 4,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 5,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 6,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 25,
+      "seed": 7,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 8,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 25,
+      "seed": 9,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 25,
+      "seed": 10,
+      "physicalLayers": 17,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 11,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 25,
+      "seed": 12,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 25,
+      "seed": 13,
+      "physicalLayers": 17,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 14,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 15,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 16,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 17,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 18,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 25,
+      "seed": 19,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 25,
+      "seed": 20,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 1,
+      "physicalLayers": 17,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 2,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 3,
+      "physicalLayers": 18,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 4,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 5,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 6,
+      "physicalLayers": 17,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 7,
+      "physicalLayers": 18,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 50,
+      "seed": 8,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 9,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 10,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 11,
+      "physicalLayers": 19,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 12,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 13,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 2
+    },
+    {
+      "level": 50,
+      "seed": 14,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 15,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 3
+    },
+    {
+      "level": 50,
+      "seed": 16,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 50,
+      "seed": 17,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 50,
+      "seed": 18,
+      "physicalLayers": 18,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 5
+    },
+    {
+      "level": 50,
+      "seed": 19,
+      "physicalLayers": 16,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 4
+    },
+    {
+      "level": 50,
+      "seed": 20,
+      "physicalLayers": 15,
+      "topNeighbours": 6,
+      "topNeighboursChangedOver3Px": 2
+    }
+  ],
+  "note": "Same-layer geometry sampled every .5 second. Counterfactual control retains the clicked food. Cross-layer overlap is intended occlusion. This is numerical validation, not a browser screenshot, phone performance test or geometric solvability proof."
+}

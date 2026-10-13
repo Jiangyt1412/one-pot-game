@@ -1,0 +1,31 @@
+{
+  "mode": "built-in image_gen",
+  "transparent": true,
+  "assets": [
+    {
+      "kind": "sushi",
+      "path": "/Users/jyt/.codex/generated_images/01a11e9a-e5a7-7cf2-9102-34a7e0ec0520/exec-6b9edf91-5ab9-4290-91c0-cb757c149438.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production mobile casual sorting game FOOD SPRITE. Single isolated object centered in a square frame on TRUE transparent alpha background, absolutely no backdrop. Style: polished chunky cute semi-3D toy food render, slightly overhead three-quarter view, vivid appetizing colors, clear silhouette, smooth dimensional shading and highlights, lighting upper-left. No cartoon face, no eyes, no human character. Occupy about 70 percent of the square, with at least 12 percent completely empty transparent margin on all sides. Only the food, absolutely no plate, no surrounding crumbs, no detached scraps, no second food, no labels, no text, no logo, no watermark. Complete uncut silhouette with a tightly contained soft contact shadow. Subject: one adorable salmon nigiri sushi, rounded white rice mound topped with a thick orange salmon slice with pale curved stripes, one dark green narrow nori band across the middle. Diagonally oriented. Distinct orange white and deep-green appearance."
+    },
+    {
+      "kind": "sausage",
+      "path": "/Users/jyt/.codex/generated_images/01a11e9a-e5a7-7cf2-9102-34a7e0ec0520/exec-03f430ec-c043-442a-b982-c5539f7f83dd.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production mobile casual sorting game FOOD SPRITE. Single isolated object centered in a square frame on TRUE transparent alpha background, absolutely no backdrop. Style: polished chunky cute semi-3D toy food render, slightly overhead three-quarter view, vivid appetizing colors, clear silhouette, smooth dimensional shading and highlights, lighting upper-left. No cartoon face, no eyes, no human character. Occupy about 70 percent of the square, with at least 12 percent completely empty transparent margin on all sides. Only the food, absolutely no plate, no surrounding crumbs, no detached scraps, no second food, no labels, no text, no logo, no watermark. Complete uncut silhouette with a tightly contained soft contact shadow. Subject: one plump curved grilled reddish-orange sausage with three clean diagonal grill cuts, glossy warm orange-red surface, rounded ends. No stick, no sauce, no accessories. Diagonally oriented so its long silhouette is clear."
+    },
+    {
+      "kind": "grapes",
+      "path": "/Users/jyt/.codex/generated_images/01a11e9a-e5a7-7cf2-9102-34a7e0ec0520/exec-fdbc82db-02ec-4235-b94f-bea72a2f0dfc.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production mobile casual sorting game FOOD SPRITE. Single isolated object centered in a square frame on TRUE transparent alpha background, absolutely no backdrop. Style: polished chunky cute semi-3D toy food render, slightly overhead three-quarter view, vivid appetizing colors, clear silhouette, smooth dimensional shading and highlights, lighting upper-left. No cartoon face, no eyes, no human character. Occupy about 70 percent of the square, with at least 12 percent completely empty transparent margin on all sides. Only the food, absolutely no plate, no surrounding crumbs, no detached scraps, no second food, no labels, no text, no logo, no watermark. Complete uncut silhouette with a tightly contained soft contact shadow. Subject: one compact connected bunch of about eight large deep-purple grapes with a short green stem and one bright green leaf touching the bunch. Glossy juicy round grapes, bold purple and green colors, entire bunch fits comfortably."
+    },
+    {
+      "kind": "peach",
+      "path": "/Users/jyt/.codex/generated_images/01a11e9a-e5a7-7cf2-9102-34a7e0ec0520/exec-ced88719-49d9-4540-bfec-28fd786235fe.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production mobile casual sorting game FOOD SPRITE. Single isolated object centered in a square frame on TRUE transparent alpha background, absolutely no backdrop. Style: polished chunky cute semi-3D toy food render, slightly overhead three-quarter view, vivid appetizing colors, clear silhouette, smooth dimensional shading and highlights, lighting upper-left. No cartoon face, no eyes, no human character. Occupy about 70 percent of the square, with at least 12 percent completely empty transparent margin on all sides. Only the food, absolutely no plate, no surrounding crumbs, no detached scraps, no second food, no labels, no text, no logo, no watermark. Complete uncut silhouette with a tightly contained soft contact shadow. Subject: one chubby peach fruit, soft saturated coral-pink fading to apricot-yellow, visible curved central crease, tiny brown stem and one green leaf attached on top. Rounded cute collectible fruit shape."
+    },
+    {
+      "kind": "ice-pop",
+      "path": "/Users/jyt/.codex/generated_images/01a11e9a-e5a7-7cf2-9102-34a7e0ec0520/exec-537e3cc0-c929-4d1f-8ecd-fb298c9488b0.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production mobile casual sorting game FOOD SPRITE. Single isolated object centered in a square frame on TRUE transparent alpha background, absolutely no backdrop. Style: polished chunky cute semi-3D toy food render, slightly overhead three-quarter view, vivid appetizing colors, clear silhouette, smooth dimensional shading and highlights, lighting upper-left. No cartoon face, no eyes, no human character. Occupy about 70 percent of the square, with at least 12 percent completely empty transparent margin on all sides. Only the food, absolutely no plate, no surrounding crumbs, no detached scraps, no second food, no labels, no text, no logo, no watermark. Complete uncut silhouette with a tightly contained soft contact shadow. Subject: one cute thick frozen ice pop, rounded rectangular body in strawberry coral-pink with a mint-green dipped cap and a short cream wooden stick attached at bottom. Glossy smooth icy highlights, diagonally oriented, complete stick visible. No sprinkles or detached parts."
+    }
+  ]
+}
