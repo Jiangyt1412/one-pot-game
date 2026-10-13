@@ -34,7 +34,7 @@ it('keeps inventory, depth, draw order and object identities throughout forty se
     for(let i=0;i<scene.length;i++){expect(scene[i]).toBe(identities.get(scene[i].id));expect(scene[i].z).toBe(board[i].z);expect('surface' in scene[i]).toBe(false);}
   }
   expect(order.map(item=>item.id)).toEqual(ids);
-});
+},15_000); // # Allow shared CI runners time for 2400 frames while retaining every invariant assertion.
 it('packs each physical layer without intersecting artwork hulls and fills its centre across seeds',()=>{
   for(const level of [1,2,25,50])for(let seed=1;seed<=20;seed++){
     const config=getLevel(level),board=spawn(config,seed),bodies=board.map(createBody);assertContained(board);

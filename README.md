@@ -3,8 +3,8 @@
 <h1 align="center">好东西，一锅端。</h1>
 <p align="center">满满一锅美味，等你眼疾手快。<br>找到露出的食物，凑齐三个，让小盘带着美味飞走。</p>
 <p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><strong>开始游戏 ↗</strong></a> · <a href="https://jiangyt1412.github.io/one-pot-game/about/">游戏简介 / 视频</a> · <a href="CHANGELOG.md">更新记录</a></p>
-<p align="center"><strong>Version 1.9.0</strong> · 修订中（WIP） · 2026-10-14</p>
-<!-- latest-version: 1.9.0 -->
+<p align="center"><strong>Version 1.9.1</strong> · 修订中（WIP） · 2026-10-14</p>
+<!-- latest-version: 1.9.1 -->
 <p align="center"><sub>手机竖屏 · 无需账号 · 进度保存在当前浏览器</sub></p>
 
 ---
@@ -31,15 +31,14 @@
 
 视频按正常游戏时间推进，展示漂动、可见食物选择和点击后的局部补位。选择由脚本完成，位置通过食物像素轮廓核对；画面叠加演示指针，无声。
 
-## 这次更新 · v1.9.0
+## 这次更新 · v1.9.1
 
-- 新增 GitHub Pages 自动构建与发布配置。
-- 修复项目子目录下图片、图标、PWA 启动地址和 Service Worker 路径。
-- 按游戏目录隔离离线缓存，保留其他项目缓存；简介视频按需加载。
-- 新增带图片、动图和视频的简介页，游戏首页显示 version。
-- 建立 CHANGELOG、发布规则与检查；后续更新同步记录 version 和实际改动。
+- 修复 GitHub CI 中40秒运动模拟测试超过默认5秒时限的问题，单项时限设为15秒，保留全部断言。
+- 同步首页、简介与更新记录的 version；展示素材保留真实的 v1.9.0 来源版本，画面与玩法未改动。
 
-[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.9.0.md) · [发布流程](docs/RELEASING.md)
+v1.9.0 加入 GitHub Pages 发布配置、子目录资源与离线缓存修复、图片视频简介和后续版本记录规则。
+
+[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.9.1.md) · [发布流程](docs/RELEASING.md)
 
 ## 打开就玩
 
