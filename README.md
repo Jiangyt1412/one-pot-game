@@ -3,8 +3,8 @@
 <h1 align="center">好东西，一锅端。</h1>
 <p align="center">满满一锅美味，等你眼疾手快。<br>找到露出的食物，凑齐三个，让小盘带着美味飞走。</p>
 <p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><strong>开始游戏 ↗</strong></a> · <a href="https://jiangyt1412.github.io/one-pot-game/about/">游戏简介 / 视频</a> · <a href="CHANGELOG.md">更新记录</a></p>
-<p align="center"><strong>Version 1.10.3</strong> · 修订中（WIP） · 2026-10-15</p>
-<!-- latest-version: 1.10.3 -->
+<p align="center"><strong>Version 1.10.4</strong> · 修订中（WIP） · 2026-10-15</p>
+<!-- latest-version: 1.10.4 -->
 <p align="center"><sub>手机竖屏 · 无需账号 · 进度保存在当前浏览器</sub></p>
 
 ---
@@ -31,13 +31,14 @@
 
 点击封面进入简介页播放30帧视频。视频按正常游戏时间推进，展示漂动、可见食物选择和点击后的局部补位。选择由脚本完成，位置通过食物像素轮廓核对；画面叠加演示指针，无声。
 
-## 这次更新 · v1.10.3
+## 这次更新 · v1.10.4
 
 - 重新生成原生30帧视频，文件从约3.1MB缩小至1.7MB，每秒设置关键帧。
 - 播放器提前缓冲；视频与分段请求由浏览器直接加载，不经过游戏离线缓存。
-- GitHub简介封面点击进入视频页；更新素材、version与更新记录。
+- GitHub简介封面点击进入视频页；素材保留准确的v1.10.3来源版本。
+- 为长模拟测试单独设置15秒时限，保留全部样本与断言，修复自动部署检查超时。
 
-[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.10.3.md) · [发布流程](docs/RELEASING.md)
+[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.10.4.md) · [发布流程](docs/RELEASING.md)
 
 ## 打开就玩
 

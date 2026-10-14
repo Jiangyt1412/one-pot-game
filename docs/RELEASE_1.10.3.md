@@ -19,3 +19,5 @@
 限制：浏览器DOM检查工具超时，未取得真实浏览器播放、掉帧或手机网络测试结果；不能据上述解码与构建检查保证所有设备都流畅。发布状态应以GitHub Actions和线上version.json实际结果为准。
 
 设计依据：[MDN的video/preload说明](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video)将auto定义为可预载整个文件的提示，浏览器可按自身策略忽略它；[Apple的Safari视频交付说明](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/CreatingVideoforSafarioniPhone/CreatingVideoforSafarioniPhone.html)说明了video/mp4与字节范围交付要求。预载和兼容编码用于降低播放负担，不能代替实际设备验证。
+
+首次GitHub部署被测试时限阻止：[工作流38605108859](https://github.com/Jiangyt1412/one-pot-game/actions/runs/38605108859)中48项通过，200种子重复布局测试超过默认5秒时限；构建和部署未执行。后续修复见v1.10.4。

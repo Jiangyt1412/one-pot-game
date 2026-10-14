@@ -52,6 +52,7 @@ it('randomly refreshes a completed plate and only then transfers matching stored
   }
   expect(matched).toBeGreaterThan(0);expect(retained).toBeGreaterThan(matched);
 });
+// # Shared CI may need longer for 400 layouts; retain all 200 seeds and every assertion.
 it('reproduces a seeded target sequence and lets every starting menu kind become a target',()=>{
   const seen=new Set<ItemKind>();
   for(let seed=1;seed<=200;seed++){
@@ -60,4 +61,4 @@ it('reproduces a seeded target sequence and lets every starting menu kind become
     for(const target of engine.snapshot.targets)if(!target.locked&&target.kind)seen.add(target.kind);
   }
   expect(seen.size).toBe(15);
-});
+},15_000);
