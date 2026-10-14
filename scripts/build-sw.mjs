@@ -31,6 +31,8 @@ self.addEventListener('activate', event => event.waitUntil(caches.keys().then(ke
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== ROOT.origin || !url.pathname.startsWith(ROOT.pathname)) return;
+  // # Native media loading keeps byte-range requests and streaming outside the offline cache.
+  if (url.pathname.startsWith(ROOT.pathname + 'about/media/') || event.request.headers?.has('range') || ['video', 'audio'].includes(event.request.destination)) return;
   // # Online navigation checks for updates; offline fallback remains within this game.
   if (event.request.mode === 'navigate') event.respondWith(fetch(event.request).catch(() => caches.match(INDEX).then(hit => hit || Response.error())));
   else event.respondWith(caches.match(event.request).then(hit => hit || fetch(event.request)));

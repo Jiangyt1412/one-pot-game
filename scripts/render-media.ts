@@ -41,7 +41,9 @@ for (const kind of itemOrder) {
   target.putImageData(normalized,0,0); sprites.set(kind,canvas); masks.set(kind,{width:size,height:size,data:alpha});
 }
 const broth = await loadImage(await readFile('public/assets/broth-v15.svg'));
-const W=540,H=960,S=520,CX=270,CY=606,FPS=24,SECONDS=16;
+const W=540,H=960,S=520,CX=270,CY=606,FPS=30,SECONDS=16;
+// # Advance the simulation at native 30fps; keep the mobile stream small with one-second keyframes.
+const VIDEO_W=450,VIDEO_H=800,MAX_RATE=800_000;
 const frame=createCanvas(W,H),ctx=frame.getContext('2d');
 function box(c:any,x:number,y:number,w:number,h:number,r:number,fill:string,stroke?:string){c.beginPath();c.roundRect(x,y,w,h,r);c.fillStyle=fill;c.fill();if(stroke){c.lineWidth=2;c.strokeStyle=stroke;c.stroke();}}
 function text(c:any,value:string,x:number,y:number,size:number,color='#563b3b',weight=600){c.font=`${weight} ${size}px GameUI, sans-serif`;c.fillStyle=color;c.fillText(value,x,y);}
@@ -94,7 +96,8 @@ function draw(time:number){
   if(cursor&&time-cursor.time<.55){const p=(time-cursor.time)/.55;ctx.beginPath();ctx.arc(cursor.x,cursor.y,13+p*19,0,Math.PI*2);ctx.strokeStyle=`rgba(255,255,255,${1-p})`;ctx.lineWidth=5;ctx.stroke();ctx.beginPath();ctx.arc(cursor.x,cursor.y,7,0,Math.PI*2);ctx.fillStyle='#ff7045';ctx.fill();}
 }
 const video=`${out}/demo-v${version}.mp4`;
-const encoder=startProcess(ffmpeg,['-y','-f','image2pipe','-vcodec','mjpeg','-framerate',String(FPS),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','25','-pix_fmt','yuv420p','-profile:v','baseline','-level','3.1','-movflags','+faststart',video],{stdio:['pipe','ignore','pipe']});
+// # Lossless RGB frames are converted to limited-range BT.709 for standard H.264 playback.
+const encoder=startProcess(ffmpeg,['-y','-f','image2pipe','-vcodec','png','-framerate',String(FPS),'-i','-','-an','-vf',`scale=${VIDEO_W}:${VIDEO_H}:flags=lanczos:out_color_matrix=bt709:out_range=tv,format=yuv420p,colorspace=iall=bt709:itrc=srgb:irange=tv:all=bt709:range=tv,setsar=1,sidedata=delete:type=ICC_PROFILE`,'-c:v','libx264','-preset','medium','-crf','27','-maxrate',String(MAX_RATE),'-bufsize',String(MAX_RATE*2),'-g',String(FPS),'-keyint_min',String(FPS),'-sc_threshold','0','-refs','1','-pix_fmt','yuv420p','-profile:v','baseline','-level','3.1','-color_range','tv','-colorspace','bt709','-color_primaries','bt709','-color_trc','bt709','-map_metadata','-1','-movflags','+faststart',video],{stdio:['pipe','ignore','pipe']});
 let log='';encoder.stderr.on('data',chunk=>{log+=chunk.toString();});
 const closed=new Promise<void>((resolve,reject)=>{encoder.once('error',reject);encoder.once('close',code=>code===0?resolve():reject(new Error(log)));});
 for(let n=0;n<FPS*SECONDS;n++){
@@ -112,9 +115,9 @@ for(let n=0;n<FPS*SECONDS;n++){
     }
   }
   draw(time);
-  if(n===48)await writeFile(`${out}/gameplay-v${version}.jpg`,await frame.encode('jpeg',94));
-  if(n===300){await writeFile(`${out}/gameplay-detail-v${version}.jpg`,await frame.encode('jpeg',94));detailSaved=true;}
-  if(!encoder.stdin.write(await frame.encode('jpeg',86)))await once(encoder.stdin,'drain');
+  if(n===FPS*2)await writeFile(`${out}/gameplay-v${version}.jpg`,await frame.encode('jpeg',94));
+  if(n===Math.round(FPS*12.5)){await writeFile(`${out}/gameplay-detail-v${version}.jpg`,await frame.encode('jpeg',94));detailSaved=true;}
+  if(!encoder.stdin.write(await frame.encode('png')))await once(encoder.stdin,'drain');
 }
 encoder.stdin.end();await closed;
 if(events.length<3||!detailSaved)throw new Error('Demonstration did not complete enough legal selections');
@@ -134,5 +137,5 @@ await writeFile(`${out}/hero-v${version}.jpg`,await hero.encode('jpeg',94));
 await promisify(execFile)(ffmpeg,['-y','-ss','3','-t','6','-i',video,'-vf','fps=8,scale=270:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse=dither=bayer:bayer_scale=4','-loop','0',`${out}/preview-v${version}.gif`],{maxBuffer:2_000_000});
 const names=[`hero-v${version}.jpg`,`gameplay-v${version}.jpg`,`gameplay-detail-v${version}.jpg`,`food-guide-v${version}.jpg`,`demo-v${version}.mp4`,`preview-v${version}.gif`];
 const files=[];for(const name of names){const bytes=await readFile(`${out}/${name}`);files.push({name,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});}
-await writeFile(`${out}/media-manifest.json`,JSON.stringify({engineVersion:version,date:pkg.gameRelease.date,provenance:'offline-engine-render',note:'GameEngine and FloatingScene run at normal game time. UI is a Canvas illustration, not a browser screenshot. Automated selections are checked against actual cleaned alpha masks. No audio or microphone test.',level:2,seed,fps:FPS,duration:SECONDS,frames:FPS*SECONDS,events,files},null,2));
+await writeFile(`${out}/media-manifest.json`,JSON.stringify({engineVersion:version,date:pkg.gameRelease.date,provenance:'offline-engine-render',note:'GameEngine and FloatingScene run at normal game time. UI is a Canvas illustration, not a browser screenshot. Automated selections are checked against actual cleaned alpha masks. No audio or microphone test.',level:2,seed,fps:FPS,duration:SECONDS,frames:FPS*SECONDS,video:{width:VIDEO_W,height:VIDEO_H,codec:'H.264 Constrained Baseline',pixelFormat:'yuv420p',colorRange:'limited',colorSpace:'BT.709',keyframeIntervalSeconds:1,maxBitrate:MAX_RATE,fastStart:true},events,files},null,2));
 console.log(JSON.stringify({version,seed,legalSelections:events.length,matches:events.filter(e=>e.effects.includes('match')).length,seconds:SECONDS,files}));

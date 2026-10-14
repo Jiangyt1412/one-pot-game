@@ -1,10 +1,10 @@
-<p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><img src="public/about/media/hero-v1.10.0.jpg" alt="一锅端：当前引擎与游戏食物素材制作的展示海报" width="100%"></a></p>
+<p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><img src="public/about/media/hero-v1.10.3.jpg" alt="一锅端：当前引擎与游戏食物素材制作的展示海报" width="100%"></a></p>
 
 <h1 align="center">好东西，一锅端。</h1>
 <p align="center">满满一锅美味，等你眼疾手快。<br>找到露出的食物，凑齐三个，让小盘带着美味飞走。</p>
 <p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><strong>开始游戏 ↗</strong></a> · <a href="https://jiangyt1412.github.io/one-pot-game/about/">游戏简介 / 视频</a> · <a href="CHANGELOG.md">更新记录</a></p>
-<p align="center"><strong>Version 1.10.2</strong> · 修订中（WIP） · 2026-10-15</p>
-<!-- latest-version: 1.10.2 -->
+<p align="center"><strong>Version 1.10.3</strong> · 修订中（WIP） · 2026-10-15</p>
+<!-- latest-version: 1.10.3 -->
 <p align="center"><sub>手机竖屏 · 无需账号 · 进度保存在当前浏览器</sub></p>
 
 ---
@@ -19,25 +19,25 @@
 | **留一点余地** | **遇见新的目标** |
 | 非目标食物进入暂存；暂存不会三消，满格就失败。 | 下一盘从剩余库存中随机预排，恰好匹配的暂存食物才会移入目标盘。 |
 
-<p align="center"><img src="public/about/media/gameplay-v1.10.0.jpg" alt="当前引擎初始关卡，离线渲染" width="32%"> <img src="public/about/media/gameplay-detail-v1.10.0.jpg" alt="当前引擎点击后的关卡，离线渲染" width="32%"> <img src="public/about/media/food-guide-v1.10.0.jpg" alt="28种清理后食物素材图鉴" width="32%"></p>
+<p align="center"><img src="public/about/media/gameplay-v1.10.3.jpg" alt="当前引擎初始关卡，离线渲染" width="32%"> <img src="public/about/media/gameplay-detail-v1.10.3.jpg" alt="当前引擎点击后的关卡，离线渲染" width="32%"> <img src="public/about/media/food-guide-v1.10.3.jpg" alt="28种清理后食物素材图鉴" width="32%"></p>
 
-<sub>演示素材：v1.10.0。由当前 GameEngine / FloatingScene 与游戏素材离线渲染；展示布局为绘图重现，不是浏览器截图或手机性能测试。</sub>
+<sub>演示素材：v1.10.3。由当前 GameEngine / FloatingScene 与游戏素材离线渲染；展示布局为绘图重现，不是浏览器截图或手机性能测试。</sub>
 
 ## 看它动起来
 
-[![当前引擎的漂动与点击演示](public/about/media/preview-v1.10.0.gif)](https://jiangyt1412.github.io/one-pot-game/about/#video)
+[![点击播放漂动与点击演示](public/about/media/gameplay-v1.10.3.jpg)](https://jiangyt1412.github.io/one-pot-game/about/#video)
 
-**[播放完整视频 ↗](https://jiangyt1412.github.io/one-pot-game/about/#video)** · [MP4 文件](public/about/media/demo-v1.10.0.mp4)
+**[播放完整视频 ↗](https://jiangyt1412.github.io/one-pot-game/about/#video)** · [MP4 文件](public/about/media/demo-v1.10.3.mp4)
 
-视频按正常游戏时间推进，展示漂动、可见食物选择和点击后的局部补位。选择由脚本完成，位置通过食物像素轮廓核对；画面叠加演示指针，无声。
+点击封面进入简介页播放30帧视频。视频按正常游戏时间推进，展示漂动、可见食物选择和点击后的局部补位。选择由脚本完成，位置通过食物像素轮廓核对；画面叠加演示指针，无声。
 
-## 这次更新 · v1.10.2
+## 这次更新 · v1.10.3
 
-- 修复简介页图片随列宽缩放时被拉长的问题，保持原图比例。
-- 视频播放器保持9:16比例，在宽屏与手机容器内等比缩放。
-- 同步版本与更新记录；展示素材保留准确的v1.10.0来源标记。
+- 重新生成原生30帧视频，文件从约3.1MB缩小至1.7MB，每秒设置关键帧。
+- 播放器提前缓冲；视频与分段请求由浏览器直接加载，不经过游戏离线缓存。
+- GitHub简介封面点击进入视频页；更新素材、version与更新记录。
 
-[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.10.2.md) · [发布流程](docs/RELEASING.md)
+[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.10.3.md) · [发布流程](docs/RELEASING.md)
 
 ## 打开就玩
 

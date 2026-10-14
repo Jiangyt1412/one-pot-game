@@ -33,6 +33,17 @@ assert.deepEqual(removed, [prefix + 'old']);
 let intercepted = false;
 handlers.fetch({ request: { method: 'GET', url: origin + '/dayflow/', mode: 'navigate' }, respondWith: () => { intercepted = true; } });
 if (base !== '/') assert.equal(intercepted, false);
+// # Media and ranged requests must reach the native network loader, including after playing the game.
+for (const request of [
+  { url: root + 'about/media/demo.mp4', destination: '' },
+  { url: root + 'assets/stream.mp4', destination: 'video' },
+  { url: root + 'assets/stream.mp3', destination: 'audio' },
+  { url: root + 'assets/stream.mp4', headers: new Headers({ Range: 'bytes=0-99' }) },
+]) {
+  let captured = false;
+  handlers.fetch({ request: { method: 'GET', mode: 'no-cors', ...request }, respondWith: () => { captured = true; } });
+  assert.equal(captured, false, `Worker intercepted media: ${request.url}`);
+}
 let response;
 handlers.fetch({ request: { method: 'GET', url: root, mode: 'navigate' }, respondWith: promise => { response = promise; } });
 assert.equal(await (await response).text(), 'offline game'); assert.equal(matches.at(-1), root + 'index.html');

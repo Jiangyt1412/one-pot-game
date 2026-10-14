@@ -3,7 +3,7 @@
 版本、日期和状态存于 package.json 的 version / gameRelease；游戏和 version.json 自动读取。每次对外发布新修改递增版本，同时更新 package-lock.json、README.md、CHANGELOG.md、public/about/index.html。
 
 ```bash
-npm version 1.10.3 --no-git-tag-version # 示例：下一补丁版本
+npm version 1.10.4 --no-git-tag-version # 示例：下一补丁版本
 npm run release:check # 核对版本、记录与媒体
 npm test # 游戏和部署地址验证
 npm run build # 本地预览构建

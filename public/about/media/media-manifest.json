@@ -1,13 +1,24 @@
 {
-  "engineVersion": "1.10.0",
-  "date": "2026-10-14",
+  "engineVersion": "1.10.3",
+  "date": "2026-10-15",
   "provenance": "offline-engine-render",
   "note": "GameEngine and FloatingScene run at normal game time. UI is a Canvas illustration, not a browser screenshot. Automated selections are checked against actual cleaned alpha masks. No audio or microphone test.",
   "level": 2,
   "seed": 1412,
-  "fps": 24,
+  "fps": 30,
   "duration": 16,
-  "frames": 384,
+  "frames": 480,
+  "video": {
+    "width": 450,
+    "height": 800,
+    "codec": "H.264 Constrained Baseline",
+    "pixelFormat": "yuv420p",
+    "colorRange": "limited",
+    "colorSpace": "BT.709",
+    "keyframeIntervalSeconds": 1,
+    "maxBitrate": 800000,
+    "fastStart": true
+  },
   "events": [
     {
       "time": 4,
@@ -15,34 +26,34 @@
       "itemId": 4,
       "pixelVerified": true,
       "point": {
-        "x": 0.1935856418067434,
-        "y": 0.6099348736981561
+        "x": 0.19358853301158255,
+        "y": 0.6099076220981204
       },
       "effects": [
         "pick"
       ]
     },
     {
-      "time": 7.208333333333333,
+      "time": 7.2,
       "kind": "mushroom",
       "itemId": 12,
       "pixelVerified": true,
       "point": {
-        "x": 0.23459980216626106,
-        "y": 0.8396275533022889
+        "x": 0.23459933529782778,
+        "y": 0.8396296587671158
       },
       "effects": [
         "pick"
       ]
     },
     {
-      "time": 10.416666666666666,
+      "time": 10.4,
       "kind": "mushroom",
       "itemId": 3,
       "pixelVerified": true,
       "point": {
-        "x": 0.20463671002414197,
-        "y": 0.248250815441392
+        "x": 0.20481559831735613,
+        "y": 0.248248863183019
       },
       "effects": [
         "pick",
@@ -50,13 +61,13 @@
       ]
     },
     {
-      "time": 13.625,
+      "time": 13.6,
       "kind": "fishball",
       "itemId": 26,
       "pixelVerified": true,
       "point": {
-        "x": 0.8487519088171233,
-        "y": 0.3813747265123682
+        "x": 0.8494359935908068,
+        "y": 0.3820949432113725
       },
       "effects": [
         "pick"
@@ -65,34 +76,34 @@
   ],
   "files": [
     {
-      "name": "hero-v1.10.0.jpg",
-      "bytes": 261618,
-      "sha256": "0d88ccd5d3c0ec87b876db5eb608e2180fbc5d29c43d6408f1ddf5af55fb2b20"
+      "name": "hero-v1.10.3.jpg",
+      "bytes": 261541,
+      "sha256": "7d0a27e1e5338dc684b341f3af25affae4e09f80a27ef4f2b0726223e6e020b2"
     },
     {
-      "name": "gameplay-v1.10.0.jpg",
-      "bytes": 165345,
-      "sha256": "5625c89b4b65f15364b7ac4a4301ae3c196ade6f95603fba4dfdc9ec5ec2025b"
+      "name": "gameplay-v1.10.3.jpg",
+      "bytes": 165333,
+      "sha256": "b176492c486539c848c67f5b90d4d30a6149412fff8056c33a7b190055b9fdf2"
     },
     {
-      "name": "gameplay-detail-v1.10.0.jpg",
-      "bytes": 164833,
-      "sha256": "9453dfe0207b41169d849b9c41e304c720955ebef7d16344a791cf90df90ae1a"
+      "name": "gameplay-detail-v1.10.3.jpg",
+      "bytes": 164768,
+      "sha256": "09fc3f2a5696fee72659cb305a12a4ccc144b3b298524439f761db87a95453a9"
     },
     {
-      "name": "food-guide-v1.10.0.jpg",
-      "bytes": 196187,
-      "sha256": "95076e0a319efa7426517291b905c200a6f720d4fdbb8aa17258f9110e2aa4b7"
+      "name": "food-guide-v1.10.3.jpg",
+      "bytes": 196209,
+      "sha256": "c6d15fd84c7aa241d8ac16ad89642b7c514204802094afffd2bcf5a90346a199"
     },
     {
-      "name": "demo-v1.10.0.mp4",
-      "bytes": 3090645,
-      "sha256": "87cdfb429f11cdaed1c2dfa900d183f0d1813c9580cda223b7aa369987617026"
+      "name": "demo-v1.10.3.mp4",
+      "bytes": 1666990,
+      "sha256": "9426f93c3c50cc7c207afd015bdbf6de476ee8607c105141e26b1525cd455a6d"
     },
     {
-      "name": "preview-v1.10.0.gif",
-      "bytes": 1198670,
-      "sha256": "d2a23e21d946c96a6d2a474fbc800a32f251f4ca1df974ce54f817bf7dde55f6"
+      "name": "preview-v1.10.3.gif",
+      "bytes": 1197791,
+      "sha256": "5ffccc85c0151a8e0d9e8c5a4346bac7d1951ee0053b4378af17390b42ed9707"
     }
   ]
 }
