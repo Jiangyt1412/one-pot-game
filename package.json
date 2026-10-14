@@ -1,7 +1,7 @@
 {
   "name": "one-pot-game",
   "private": true,
-  "version": "1.10.1",
+  "version": "1.10.2",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -33,7 +33,7 @@
     "@playwright/test": "^1.56.0"
   },
   "gameRelease": {
-    "date": "2026-10-14",
+    "date": "2026-10-15",
     "status": "修订中"
   }
 }
