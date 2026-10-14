@@ -3,6 +3,7 @@
 - 完成并发布用户要求的修改时更新 version。修复、小幅视觉调整递增补丁号；新增功能递增次版本。package.json 是版本、日期和“修订中”状态的来源，同时更新 package-lock.json。
 - 在 CHANGELOG.md 最上方记录真实日期、实际新增和修复内容、验证结果。保留历史版本，不得把未完成或未验证的事项写成已完成。
 - README.md 和 public/about/index.html 同时显示当前 version、最新更新、游戏入口、图片和视频。保留“修订中”，直到用户明确要求改变。
+- 公开介绍只呈现游戏内容与版本信息，不加入个人姓名、定制语音口令或相关修改说明；关联的公开说明也遵守此要求。
 - 游戏画面改变后更新展示素材与 media-manifest.json。不能重录时，保留素材原始版本和准确来源，不能把旧图标成新版截图。
 - 发布前运行 npm run release:check、npm test、npm run build、npm run build:pages。通过后，除非有新修改或问题，不重复扩大检查。
 - 布局、碰撞或随机目标发生修改时，额外运行 test:layout、test:motion、test:levels，明确数值检查与真实手机验证的区别。
