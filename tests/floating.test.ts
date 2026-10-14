@@ -30,20 +30,46 @@ it('keeps inventory, depth, draw order and object identities throughout forty se
   const config=getLevel(2),board=spawn(config,71),floating=new FloatingScene(),initial=floating.update(board,0,0,config);
   const identities=new Map(initial.map(item=>[item.id,item])),order=floating.drawOrder,ids=order.map(item=>item.id);
   for(let frame=1;frame<=2400;frame++){
-    const scene=floating.update(board,frame/60,1/60,config);expect(floating.drawOrder).toBe(order);expect(scene).toHaveLength(99);expect(floating.pendingRefills).toBe(0);
+    const scene=floating.update(board,frame/60,1/60,config,false,false,[board[0].kind]);expect(floating.drawOrder).toBe(order);expect(scene).toHaveLength(99);expect(floating.pendingRefills).toBe(0);
     for(let i=0;i<scene.length;i++){expect(scene[i]).toBe(identities.get(scene[i].id));expect(scene[i].z).toBe(board[i].z);expect('surface' in scene[i]).toBe(false);}
   }
   expect(order.map(item=>item.id)).toEqual(ids);
 },15_000); // # Allow shared CI runners time for 2400 frames while retaining every invariant assertion.
-it('packs each physical layer without intersecting artwork hulls and fills its centre across seeds',()=>{
+it('packs nonintersecting physical layers while the combined food pile covers the bowl centre',()=>{
   for(const level of [1,2,25,50])for(let seed=1;seed<=20;seed++){
     const config=getLevel(level),board=spawn(config,seed),bodies=board.map(createBody);assertContained(board);
+    // # Coverage belongs to the whole pile; individual layers no longer require a food anchored at the centre.
+    expect(bodies.some(body=>{
+      for(let i=0;i<body.axes.length;i+=2){const x=body.axes[i],y=body.axes[i+1],v=.5*x+.5*y;let lo=Infinity,hi=-Infinity;
+        for(let j=0;j<body.points.length;j+=2){const p=body.points[j]*x+body.points[j+1]*y;lo=Math.min(lo,p);hi=Math.max(hi,p);}if(v<lo||v>hi)return false;
+      }return true;
+    })).toBe(true);
     for(const depth of new Set(board.map(item=>item.depth))){
       const layer=bodies.filter(body=>body.food.depth===depth);
-      expect(layer.some(body=>Math.hypot(body.food.x-.5,body.food.y-.5)<.015)).toBe(true);
       for(let i=0;i<layer.length;i++)for(let j=i+1;j<layer.length;j++)expect(contactBetween(layer[i],layer[j],contact)).toBe(false);
     }
   }
+});
+it('distributes large foods across sectors without repeatedly pinning them to the centre',()=>{
+  let large=0,central=0,totalRadius=0;const sectors=new Map<string,Set<number>>();
+  for(let seed=1;seed<=80;seed++){
+    const board=new GameEngine(2,seed).snapshot.board;
+    for(const item of board){let kinds=sectors.get(item.kind);if(!kinds){kinds=new Set();sectors.set(item.kind,kinds);}kinds.add((item.x>=.5?1:0)+(item.y>=.5?2:0));
+      if(item.size>=.37){const radius=Math.hypot(item.x-.5,item.y-.5);large++;totalRadius+=radius;if(radius<.025)central++;}
+    }
+  }
+  expect(large).toBeGreaterThan(500);expect(central/large).toBeLessThan(.04);expect(totalRadius/large).toBeGreaterThan(.12);
+  for(const sectorsForKind of sectors.values())expect(sectorsForKind.size).toBe(4);
+});
+it('gently favours a nearby next-order food after a pick without moving remote food or changing depth',()=>{
+  const config={...getLevel(2),floatSpeed:0,rotationSpeed:0},board=[food(0,.5,.5,1,.2),food(1,.68,.5,1,.04),food(2,.5,.70,1,.04),food(3,.29,.5,1,.04),food(4,.5,.74,1,.04),food(5,.90,.5,1,.04)];
+  board[4].kind=board[5].kind='carrot';const controlBoard=board.map(item=>({...item})),hinted=new FloatingScene(),control=new FloatingScene();
+  hinted.update(board,0,0,config);control.update(controlBoard,0,0,config);board.shift();controlBoard.shift();
+  for(let frame=1;frame<=240;frame++){hinted.update(board,frame/60,1/60,config,false,false,['carrot']);control.update(controlBoard,frame/60,1/60,config);}
+  const get=(scene:FloatingScene,id:number)=>scene.drawOrder.find(item=>item.id===id)!;
+  expect(get(hinted,4).y).toBeLessThan(get(control,4).y-.05);expect(get(hinted,5).x).toBe(.90);
+  for(const item of hinted.drawOrder){expect(item.depth).toBe(1);expect(item.z).toBe(item.id);}
+  expect(hinted.pendingRefills).toBe(0);assertContained(hinted.drawOrder);
 });
 it('retains opaque upper foods and does not collide foods on different layers',()=>{
   const lower=food(1,.5,.5,0,.1),upper=food(999,.5,.5,1,.3),board=[lower,upper],floating=new FloatingScene(),config=getLevel(2);

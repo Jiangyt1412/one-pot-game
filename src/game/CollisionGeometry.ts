@@ -37,11 +37,16 @@ export function contactBetween(a:CollisionBody,b:CollisionBody,out:Contact,gap=0
   }
   out.x=nx;out.y=ny;out.distance=best;return true;
 }
+// # Sample legal positions using the rotated artwork boundary, rather than favouring a fixed centre.
+export function radialLimit(body:CollisionBody,nx:number,ny:number):number {
+  let limit=.478;
+  for(let i=0;i<body.points.length;i+=2){const x=body.points[i]-body.food.x,y=body.points[i+1]-body.food.y,projection=nx*x+ny*y;limit=Math.min(limit,-projection+Math.sqrt(Math.max(0,projection*projection+.478**2-x*x-y*y)));}
+  return Math.max(0,limit);
+}
 // # Constrain the rotated opaque hull itself, allowing long foods to sit naturally near the circular rim.
 export function containBody(body:CollisionBody):boolean {
   const dx=body.food.x-.5,dy=body.food.y-.5,d=Math.hypot(dx,dy);if(!d)return false;
-  const nx=dx/d,ny=dy/d;let limit=.478;
-  for(let i=0;i<body.points.length;i+=2){const x=body.points[i]-body.food.x,y=body.points[i+1]-body.food.y,projection=nx*x+ny*y;limit=Math.min(limit,-projection+Math.sqrt(Math.max(0,projection*projection+.478**2-x*x-y*y)));}
+  const nx=dx/d,ny=dy/d,limit=radialLimit(body,nx,ny);
   if(d<=limit)return false;
   moveBody(body,nx*(limit-d),ny*(limit-d));return true;
 }

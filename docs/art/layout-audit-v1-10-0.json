@@ -1,0 +1,299 @@
+{
+  "version": "1.10.0",
+  "levels": 50,
+  "seedsPerLevel": 20,
+  "scenes": 1000,
+  "milliseconds": 2196,
+  "foods": 99000,
+  "largeFoods": 21462,
+  "centreDefinitionRadius": 0.025,
+  "largeFoodsCentred": 87,
+  "largeCentreRatio": 0.004053676265026559,
+  "largeAverageCentreDistance": 0.2254934177039713,
+  "convexHullCentreCoverage": 1,
+  "maxHullRadius": 0.4707745645728418,
+  "initialSameLayerOverlap": 0,
+  "kinds": {
+    "broccoli": {
+      "count": 7725,
+      "sectors": [
+        1854,
+        1847,
+        2095,
+        1929
+      ],
+      "central": 63
+    },
+    "ice-pop": {
+      "count": 2685,
+      "sectors": [
+        598,
+        788,
+        710,
+        589
+      ],
+      "central": 8
+    },
+    "sausage": {
+      "count": 2586,
+      "sectors": [
+        794,
+        512,
+        542,
+        738
+      ],
+      "central": 2
+    },
+    "grapes": {
+      "count": 2556,
+      "sectors": [
+        678,
+        603,
+        657,
+        618
+      ],
+      "central": 10
+    },
+    "shrimp": {
+      "count": 7671,
+      "sectors": [
+        1884,
+        1901,
+        1990,
+        1896
+      ],
+      "central": 12
+    },
+    "chicken": {
+      "count": 7677,
+      "sectors": [
+        2078,
+        1720,
+        1748,
+        2131
+      ],
+      "central": 24
+    },
+    "lettuce": {
+      "count": 3033,
+      "sectors": [
+        850,
+        770,
+        696,
+        717
+      ],
+      "central": 27
+    },
+    "cabbage": {
+      "count": 2751,
+      "sectors": [
+        638,
+        766,
+        734,
+        613
+      ],
+      "central": 12
+    },
+    "dumpling": {
+      "count": 6879,
+      "sectors": [
+        1620,
+        1857,
+        1813,
+        1589
+      ],
+      "central": 18
+    },
+    "tofu": {
+      "count": 2790,
+      "sectors": [
+        669,
+        699,
+        717,
+        705
+      ],
+      "central": 7
+    },
+    "mushroom": {
+      "count": 7065,
+      "sectors": [
+        1759,
+        1818,
+        1802,
+        1686
+      ],
+      "central": 19
+    },
+    "wonton": {
+      "count": 2970,
+      "sectors": [
+        774,
+        752,
+        707,
+        737
+      ],
+      "central": 3
+    },
+    "sushi": {
+      "count": 2763,
+      "sectors": [
+        668,
+        720,
+        700,
+        675
+      ],
+      "central": 12
+    },
+    "peach": {
+      "count": 2916,
+      "sectors": [
+        751,
+        739,
+        743,
+        683
+      ],
+      "central": 7
+    },
+    "fishball": {
+      "count": 2898,
+      "sectors": [
+        733,
+        668,
+        753,
+        744
+      ],
+      "central": 4
+    },
+    "lotus": {
+      "count": 2736,
+      "sectors": [
+        672,
+        701,
+        673,
+        690
+      ],
+      "central": 4
+    },
+    "beef": {
+      "count": 2940,
+      "sectors": [
+        680,
+        777,
+        787,
+        696
+      ],
+      "central": 6
+    },
+    "crab": {
+      "count": 2805,
+      "sectors": [
+        769,
+        631,
+        654,
+        751
+      ],
+      "central": 9
+    },
+    "egg": {
+      "count": 2526,
+      "sectors": [
+        599,
+        668,
+        653,
+        606
+      ],
+      "central": 6
+    },
+    "carrot": {
+      "count": 2811,
+      "sectors": [
+        781,
+        668,
+        566,
+        796
+      ],
+      "central": 14
+    },
+    "corn": {
+      "count": 2637,
+      "sectors": [
+        658,
+        687,
+        642,
+        650
+      ],
+      "central": 5
+    },
+    "strawberry": {
+      "count": 2478,
+      "sectors": [
+        610,
+        619,
+        634,
+        615
+      ],
+      "central": 6
+    },
+    "bun": {
+      "count": 2673,
+      "sectors": [
+        658,
+        706,
+        696,
+        613
+      ],
+      "central": 4
+    },
+    "siu-mai": {
+      "count": 2538,
+      "sectors": [
+        643,
+        636,
+        681,
+        578
+      ],
+      "central": 7
+    },
+    "cake": {
+      "count": 2457,
+      "sectors": [
+        662,
+        617,
+        568,
+        610
+      ],
+      "central": 4
+    },
+    "watermelon": {
+      "count": 2604,
+      "sectors": [
+        654,
+        707,
+        637,
+        606
+      ],
+      "central": 8
+    },
+    "orange": {
+      "count": 2451,
+      "sectors": [
+        660,
+        570,
+        634,
+        587
+      ],
+      "central": 6
+    },
+    "donut": {
+      "count": 2379,
+      "sectors": [
+        610,
+        629,
+        558,
+        582
+      ],
+      "central": 4
+    }
+  },
+  "note": "All sizes and stock are preserved. Legal positions are weighted by rotated hull bounds and lightly by preplanned orders, not a mathematically uniform distribution of every opaque pixel. Convex hull coverage can include sprite holes. No phone performance or full geometric solvability test."
+}

@@ -1,19 +1,21 @@
-import type { FoodItem, GameEffect, GameSnapshot, GameStatus, Inventory, ToolKind } from './types';
+import type { FoodItem, GameEffect, GameSnapshot, GameStatus, Inventory, ItemKind, ToolKind } from './types';
 import { getLevel } from '../config/levels';
 import { gameConfig } from '../config/gameConfig';
 import { packFoods, seededRandom, spawn } from './SpawnManager';
 import { isClickable } from './PhysicsEngine';
-import { chooseTarget } from './MatchEngine';
+import { chooseTarget, targetCandidates } from './MatchEngine';
 // # The engine has no browser dependency. Every mutation enforces legal states and inventory conservation.
 export class GameEngine {
   snapshot:GameSnapshot;
   effects:GameEffect[]=[];
   private rng:()=>number;
+  private planned:(ItemKind|null)[]=Array(4).fill(null);
+  get nextTargets():readonly (ItemKind|null)[]{return this.planned;}
   constructor(level=1,seed=Date.now(),inventory?:Inventory) {
     const config=getLevel(level);this.rng=seededRandom(seed+1);
-    this.snapshot={status:'LOADING',level:config.level,board:spawn(config,seed),targets:Array.from({length:4},(_,i)=>({kind:null,count:0,locked:i>=2})),
+    this.snapshot={status:'LOADING',level:config.level,board:[],targets:Array.from({length:4},(_,i)=>({kind:null,count:0,locked:i>=2})),
       holding:[],holdingCapacity:3,tools:{...(inventory??config.initialToolCount)},eliminated:0,total:config.totalItems,revives:0,revision:0};
-    this.refreshTargets();this.snapshot.status='READY';
+    this.snapshot.board=spawn(config,seed,stock=>{this.snapshot.board=stock;this.refreshTargets();return this.planned;});this.snapshot.status='READY';
   }
   start(){if(this.snapshot.status==='READY'){this.snapshot.status='PLAYING';this.touch();}}
   touch(){this.snapshot.revision++;}
@@ -22,7 +24,23 @@ export class GameEngine {
   drainEffects(){const effects=this.effects;this.effects=[];return effects;}
   private refreshTargets() {
     const s=this.snapshot;
-    for(const tray of s.targets)if(!tray.locked&&!tray.kind){tray.kind=chooseTarget(s.board,s.holding,s.targets,this.rng);tray.count=0;}
+    for(let index=0;index<s.targets.length;index++){
+      const tray=s.targets[index];if(tray.locked||tray.kind)continue;
+      const candidates=targetCandidates(s.board,s.holding,s.targets),next=this.planned[index];
+      tray.kind=next&&candidates.includes(next)?next:chooseTarget(s.board,s.holding,s.targets,this.rng);tray.count=0;this.planned[index]=null;
+    }
+    // # Queue stocked orders independently of storage and visibility. Revalidate when another plate uses that stock.
+    const eligible=new Set(targetCandidates(s.board,s.holding,s.targets)),reserved=new Set<ItemKind>();
+    for(let index=0;index<s.targets.length;index++){
+      const tray=s.targets[index];let kind=this.planned[index];
+      if(tray.locked||!tray.kind){this.planned[index]=null;continue;}
+      if(!kind||!eligible.has(kind)||reserved.has(kind)){
+        const candidates=[...eligible].filter(candidate=>!reserved.has(candidate));
+        kind=candidates.length?candidates[Math.min(candidates.length-1,Math.floor(this.rng()*candidates.length))]:null;
+        this.planned[index]=kind;
+      }
+      if(kind)reserved.add(kind);
+    }
   }
   private absorbHolding() {
     const s=this.snapshot;
@@ -96,7 +114,7 @@ export class GameEngine {
     }
     s.tools[tool]--;
     if(tool==='shuffle') {
-      packFoods(s.board,this.rng,getLevel(s.level));
+      packFoods(s.board,this.rng,getLevel(s.level),this.planned);
       this.effects.push({type:'shuffle'});
     } else this.returnHolding();
     this.touch();return {used:true};
@@ -104,7 +122,7 @@ export class GameEngine {
   private returnHolding() {
     const s=this.snapshot,returning=[...s.holding];
     const depth=Math.max(-1,...s.board.map(i=>i.depth))+1,z=Math.max(-1,...s.board.map(i=>i.z))+1;
-    packFoods(returning,this.rng,getLevel(s.level));
+    packFoods(returning,this.rng,getLevel(s.level),this.planned);
     for(const item of returning){item.depth+=depth;item.z+=z;s.board.push(item);}
     s.holding=[];this.effects.push({type:'return',items:returning});
   }

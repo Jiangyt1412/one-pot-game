@@ -168,7 +168,7 @@ export function App() {
         <section className="targets-section"><div className="target-row" style={{gridTemplateColumns:snapshot.targets.map(target=>target.locked?'minmax(44px, .48fr)':'minmax(0, 1fr)').join(' ')}}>{snapshot.targets.map((target,index)=><TargetTray key={index} target={target} index={index} pulse={pulses[index]} completion={completedPlates[index]} reduced={settings.reducedMotion} onUnlock={()=>openVoice({mode:'unlock',index})}/>)}</div></section>
         <HoldingTray holding={snapshot.holding} capacity={snapshot.holdingCapacity} onUnlock={()=>openVoice({mode:'holding'})}/>
         {settings.reducedMotion&&<button className="restore-floating" onClick={()=>toggleSetting('reducedMotion')}>开启漂浮</button>}
-        <PotCanvas snapshot={snapshot} onScene={scene=>{visibleScene.current=scene;}} onPick={pick} reduced={settings.reducedMotion} shake={shake}/>
+        <PotCanvas snapshot={snapshot} onScene={scene=>{visibleScene.current=scene;}} onPick={pick} reduced={settings.reducedMotion} shake={shake} nextTargets={engineRef.current?.nextTargets}/>
         <ToolBar tools={snapshot.tools} onUse={useTool} disabled={snapshot.status!=='PLAYING'||trayAnimating}/>
 
       </section>}

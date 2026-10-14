@@ -5,11 +5,12 @@ import { getLevel } from '../config/levels';
 import { FloatingScene } from '../game/FloatingScene';
 import { pickRenderedPixel } from '../game/FoodHitTest';
 // # Canvas owns motion and the exact drawn projection; no parallel text-selection control exists.
-export function PotCanvas({snapshot,onPick,onScene,reduced,decorative=false,shake=0}:{snapshot:GameSnapshot;onPick:(id:number,visibleBoard?:readonly FoodItem[])=>void;onScene?:(scene:readonly FoodItem[])=>void;reduced:boolean;decorative?:boolean;shake?:number}) {
+export function PotCanvas({snapshot,onPick,onScene,reduced,decorative=false,shake=0,nextTargets=[]}:{snapshot:GameSnapshot;onPick:(id:number,visibleBoard?:readonly FoodItem[])=>void;onScene?:(scene:readonly FoodItem[])=>void;reduced:boolean;decorative?:boolean;shake?:number;nextTargets?:readonly (ItemKind|null)[]}) {
   const floating=useRef(new FloatingScene());
   const canvas=useRef<HTMLCanvasElement>(null),current=useRef(snapshot),animTime=useRef(0),scene=useRef<FoodItem[]>([]),publish=useRef(onScene);
   const shuffleUntil=useRef(0);
   const trackedBoard=useRef<FoodItem[]|null>(null);
+  const upcoming=useRef(nextTargets);upcoming.current=nextTargets;
   current.current=snapshot;publish.current=onScene;
   // # A shuffle interpolates for its short effect without recreating the animation loop or resetting the clock.
   useEffect(()=>{if(shake)shuffleUntil.current=performance.now()+650;},[shake]);
@@ -27,7 +28,7 @@ export function PotCanvas({snapshot,onPick,onScene,reduced,decorative=false,shak
       if(trackedBoard.current!==state.board){trackedBoard.current=state.board;animTime.current=0;floating.current.reset();sprites.clear();dirty=true;}
       // # Paused and reduced-motion scenes redraw only when their content or viewport changes.
       if((!active||reduced)&&!dirty&&lastRevision===state.revision){frame=requestAnimationFrame(draw);return;}
-      scene.current=floating.current.update(state.board,animTime.current,active?dt:0,config,reduced,now<shuffleUntil.current);publish.current?.(scene.current);
+      scene.current=floating.current.update(state.board,animTime.current,active?dt:0,config,reduced,now<shuffleUntil.current,upcoming.current);publish.current?.(scene.current);
       ctx.setTransform(dpr,0,0,dpr,0,0);ctx.globalAlpha=1;
       ctx.clearRect(0,0,width,height);
       ctx.save();ctx.beginPath();ctx.ellipse(width/2,height/2,width*.49,height*.49,0,0,Math.PI*2);ctx.clip();

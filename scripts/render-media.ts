@@ -98,7 +98,7 @@ const encoder=startProcess(ffmpeg,['-y','-f','image2pipe','-vcodec','mjpeg','-fr
 let log='';encoder.stderr.on('data',chunk=>{log+=chunk.toString();});
 const closed=new Promise<void>((resolve,reject)=>{encoder.once('error',reject);encoder.once('close',code=>code===0?resolve():reject(new Error(log)));});
 for(let n=0;n<FPS*SECONDS;n++){
-  const time=n/FPS;scene=floating.update(engine.snapshot.board,time,n?1/FPS:0,getLevel(2));
+  const time=n/FPS;scene=floating.update(engine.snapshot.board,time,n?1/FPS:0,getLevel(2),false,false,engine.nextTargets);
   if(clickIndex<clicks.length&&time>=clicks[clickIndex]){
     const targetKinds=engine.snapshot.targets.filter(t=>!t.locked&&t.kind).map(t=>t.kind!);
     const options=scene.filter(item=>targetKinds.includes(item.kind)).sort((a,b)=>Number(b.kind===preferred)-Number(a.kind===preferred)||b.z-a.z);

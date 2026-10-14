@@ -1,4 +1,4 @@
-import type {FoodItem,LevelConfig} from './types';
+import type {FoodItem,ItemKind,LevelConfig} from './types';
 import {driftAmplitude,surfaceSpeed} from './PhysicsEngine';
 import {createBody,updateBody,moveBody,containBody,contactBetween,type CollisionBody} from './CollisionGeometry';
 interface MotionEntry {
@@ -19,16 +19,18 @@ export class FloatingScene {
   get drawOrder():readonly FoodItem[]{return this.ordered;}
   get pendingRefills(){let count=0;for(const entry of this.entries.values())if(entry.elapsed<refillSeconds)count++;return count;}
   reset(){this.source=null;this.entries.clear();this.scene=[];this.ordered=[];this.layers=[];}
-  private fillVacancy(removed:FoodItem,ids:ReadonlySet<number>){
+  private fillVacancy(removed:FoodItem,ids:ReadonlySet<number>,upcoming:ReadonlySet<ItemKind>){
     const nearby=[...this.entries.values()].filter(entry=>{
       const food=entry.food,d=Math.hypot(food.x-removed.x,food.y-removed.y);
       const ripple=food.depth===removed.depth?.22:.11;
       return ids.has(food.id)&&d<(food.size+removed.size)*.48+ripple;
     });
     const distance=(entry:MotionEntry)=>Math.hypot(entry.food.x-removed.x,entry.food.y-removed.y);
+    // # Future-order food receives a small tie-break among already-nearby neighbours, without promotion or teleporting.
+    const priority=(entry:MotionEntry)=>distance(entry)*(upcoming.has(entry.food.kind)?.78:1);
     // # Prioritize the clicked layer so visible neighbours change layout, rather than moving only hidden central foods.
-    const same=nearby.filter(entry=>entry.food.depth===removed.depth).sort((a,b)=>distance(a)-distance(b)).slice(0,3);
-    const lower=nearby.filter(entry=>entry.food.depth<removed.depth).sort((a,b)=>b.food.depth-a.food.depth||distance(a)-distance(b)).slice(0,5-same.length);
+    const same=nearby.filter(entry=>entry.food.depth===removed.depth).sort((a,b)=>priority(a)-priority(b)).slice(0,3);
+    const lower=nearby.filter(entry=>entry.food.depth<removed.depth).sort((a,b)=>b.food.depth-a.food.depth||priority(a)-priority(b)).slice(0,5-same.length);
     const neighbours=[...same,...lower];
     for(const entry of neighbours){
       const food=entry.food,dx=removed.x-food.x,dy=removed.y-food.y,d=Math.hypot(dx,dy),pull=Math.min(.13,d*.72);
@@ -37,8 +39,8 @@ export class FloatingScene {
   }
   private contacts(reduced=false){
     const contact=this.contact;
-    // # Three short solver passes remove contact penetration; inverse area makes small foods yield more than large ones.
-    for(let pass=0;pass<3;pass++)for(const layer of this.layers)for(let i=0;i<layer.length;i++)for(let j=i+1;j<layer.length;j++){
+    // # Extra short passes resolve crowded rim contacts; inverse area makes small foods yield more than large ones.
+    for(let pass=0;pass<6;pass++)for(const layer of this.layers)for(let i=0;i<layer.length;i++)for(let j=i+1;j<layer.length;j++){
       const a=layer[i],b=layer[j];if(!contactBetween(a.body,b.body,contact))continue;
       const ia=1/(a.food.size*a.food.size),ib=1/(b.food.size*b.food.size),sum=ia+ib;
       const correction=Math.min(reduced?1:.003,Math.max(0,contact.distance-.00001)*.96);
@@ -49,11 +51,11 @@ export class FloatingScene {
       containBody(a.body);containBody(b.body);
     }
   }
-  update(board:readonly FoodItem[],time:number,dt:number,config:LevelConfig,reduced=false,rearranging=false):FoodItem[]{
+  update(board:readonly FoodItem[],time:number,dt:number,config:LevelConfig,reduced=false,rearranging=false,upcoming:readonly (ItemKind|null)[]=[]):FoodItem[]{
     if(this.source!==board){this.reset();this.source=board;}
     let changed=this.scene.length!==board.length;
     const ids=changed?new Set(board.map(item=>item.id)):null;
-    if(ids){for(const entry of this.entries.values())if(!ids.has(entry.food.id))this.fillVacancy(entry.food,ids);for(const id of this.entries.keys())if(!ids.has(id))this.entries.delete(id);}
+    if(ids){const hints=new Set(upcoming.filter((kind):kind is ItemKind=>!!kind));for(const entry of this.entries.values())if(!ids.has(entry.food.id))this.fillVacancy(entry.food,ids,hints);for(const id of this.entries.keys())if(!ids.has(id))this.entries.delete(id);}
     for(let index=0;index<board.length;index++){
       const item=board[index];let entry=this.entries.get(item.id);
       if(!entry){const food={...item};entry={food,body:createBody(food),vx:0,vy:0,anchorX:item.x,anchorY:item.y,baseAngle:item.angle,fromX:item.x,fromY:item.y,toX:item.x,toY:item.y,elapsed:refillSeconds,shuffleFromX:item.x,shuffleFromY:item.y,shuffleFromAngle:item.angle,shuffleElapsed:shuffleSeconds};this.entries.set(item.id,entry);changed=true;}

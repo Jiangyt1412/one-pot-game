@@ -5,6 +5,7 @@
 - README.md 和 public/about/index.html 同时显示当前 version、最新更新、游戏入口、图片和视频。保留“修订中”，直到用户明确要求改变。
 - 游戏画面改变后更新展示素材与 media-manifest.json。不能重录时，保留素材原始版本和准确来源，不能把旧图标成新版截图。
 - 发布前运行 npm run release:check、npm test、npm run build、npm run build:pages。通过后，除非有新修改或问题，不重复扩大检查。
+- 布局、碰撞或随机目标发生修改时，额外运行 test:layout、test:motion、test:levels，明确数值检查与真实手机验证的区别。
 - 用户授权发布后提交到 GitHub 主分支，由 Pages 工作流发布。核对部署结果、公开网址及 version.json，仅推送代码不等于部署成功。
 - 首次启用 Pages 需 Source=GitHub Actions。普通 GITHUB_TOKEN 不能代替首次启用所需的管理权限。
 - 父项目的 sources/ 仅为只读参考资料，不属于游戏，绝不上传。

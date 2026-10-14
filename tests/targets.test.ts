@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { chooseTarget } from '../src/game/MatchEngine';
+import { chooseTarget, targetCandidates } from '../src/game/MatchEngine';
 import { GameEngine } from '../src/game/GameEngine';
 import { spawn } from '../src/game/SpawnManager';
 import { getLevel } from '../src/config/levels';
@@ -14,6 +14,23 @@ it('draws equally from stocked kinds without preferring holding food or high sta
   const before=[0,.35,.7].map(value=>chooseTarget(board,holding,targets,()=>value));
   board.push(holding.pop()!);holding.push(board.splice(board.findIndex(food=>food.kind==='shrimp'),1)[0]);
   expect([0,.35,.7].map(value=>chooseTarget(board,holding,targets,()=>value))).toEqual(before);
+});
+it('plans the next plate from stocked kinds before placement and preserves it when food moves into storage',()=>{
+  const engine=new GameEngine(2,57),copy=new GameEngine(2,57);engine.start();
+  expect(engine.snapshot.board).toEqual(copy.snapshot.board);expect(engine.nextTargets).toEqual(copy.nextTargets);
+  const planned=[...engine.nextTargets],eligible=targetCandidates(engine.snapshot.board,[],engine.snapshot.targets);
+  for(const kind of planned.filter(Boolean))expect(eligible).toContain(kind);
+  expect(new Set(planned.filter(Boolean)).size).toBe(2);
+  const stored=engine.snapshot.board.find(item=>!engine.snapshot.targets.some(target=>target.kind===item.kind))!;
+  expect(engine.pick(stored.id,true)).toBe(true);expect(engine.nextTargets).toEqual(planned);
+});
+it('uses the planned next plate on completion and revalidates plans when another unlocked plate occupies them',()=>{
+  const engine=new GameEngine(2,89);engine.start();const next=engine.nextTargets[0],kind=engine.snapshot.targets[0].kind!;
+  for(const item of engine.snapshot.board.filter(item=>item.kind===kind).slice(0,3))expect(engine.pick(item.id,true)).toBe(true);
+  expect(engine.snapshot.targets[0].kind).toBe(next);expect(engine.snapshot.eliminated).toBe(3);
+  const reserved=engine.nextTargets[0]!;engine.snapshot.targets[2].kind=reserved;engine.setStatus('VOICE_CHALLENGE');expect(engine.unlock(2)).toBe(true);
+  expect(engine.nextTargets[0]).not.toBe(reserved);
+  for(const planned of engine.nextTargets.filter(Boolean))expect(targetCandidates(engine.snapshot.board,engine.snapshot.holding,engine.snapshot.targets)).toContain(planned);
 });
 it('excludes occupied orders and insufficient stock while allowing a valid kind whose food is stored',()=>{
   const board=pool(['carrot','shrimp','tofu']);board.splice(board.findIndex(food=>food.kind==='shrimp'),1);

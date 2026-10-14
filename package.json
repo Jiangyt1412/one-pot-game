@@ -1,7 +1,7 @@
 {
   "name": "one-pot-game",
   "private": true,
-  "version": "1.9.1",
+  "version": "1.10.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -11,6 +11,7 @@
     "test:levels": "tsx scripts/check-levels.ts",
     "test:browser": "node scripts/browser-tests.mjs",
     "test:motion": "tsx scripts/audit-motion.ts",
+    "test:layout": "tsx scripts/audit-layout.ts",
     "build:pages": "tsc -b && vite build --mode pages && node scripts/build-sw.mjs dist-pages && node scripts/check-build.mjs dist-pages /one-pot-game/",
     "preview:pages": "vite preview --mode pages --host 0.0.0.0",
     "release:check": "node scripts/check-release.mjs",

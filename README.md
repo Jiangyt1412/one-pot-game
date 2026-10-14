@@ -1,50 +1,50 @@
-<p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><img src="public/about/media/hero-v1.9.0.jpg" alt="一锅端：当前引擎与游戏食物素材制作的展示海报" width="100%"></a></p>
+<p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><img src="public/about/media/hero-v1.10.0.jpg" alt="一锅端：当前引擎与游戏食物素材制作的展示海报" width="100%"></a></p>
 
 <h1 align="center">好东西，一锅端。</h1>
 <p align="center">满满一锅美味，等你眼疾手快。<br>找到露出的食物，凑齐三个，让小盘带着美味飞走。</p>
 <p align="center"><a href="https://jiangyt1412.github.io/one-pot-game/"><strong>开始游戏 ↗</strong></a> · <a href="https://jiangyt1412.github.io/one-pot-game/about/">游戏简介 / 视频</a> · <a href="CHANGELOG.md">更新记录</a></p>
-<p align="center"><strong>Version 1.9.1</strong> · 修订中（WIP） · 2026-10-14</p>
-<!-- latest-version: 1.9.1 -->
+<p align="center"><strong>Version 1.10.0</strong> · 修订中（WIP） · 2026-10-14</p>
+<!-- latest-version: 1.10.0 -->
 <p align="center"><sub>手机竖屏 · 无需账号 · 进度保存在当前浏览器</sub></p>
 
 ---
 
 ## 在一锅热闹里，找准你的美味
 
-食物缓缓漂动，同层物品相互碰撞。被遮挡的食物露出来时，点中可见部分，就能收进盘子。大白菜、鸡腿和小鱼丸各有自己的尺寸，同种食物大小一致。
+每一锅都换个布局，大白菜、鸡腿和小鱼丸随机分散，各有自己的尺寸，同种食物大小一致。食物缓缓漂动，同层物品相互碰撞；点走一个，邻居慢慢补位，下一盘的美味也有机会露出来。
 
 | 一锅够热闹 | 三个刚刚好 |
 | --- | --- |
 | 每关 **99 件、15 种**食物，全库 **28 种**轮换，50 关。 | 目标盘是**三角形三个位置**，收齐同类食物，满盘飞走，新盘飞入。 |
 | **留一点余地** | **遇见新的目标** |
-| 非目标食物进入暂存；暂存不会三消，满格就失败。 | 新目标独立随机产生，恰好匹配的暂存食物才会移入目标盘。 |
+| 非目标食物进入暂存；暂存不会三消，满格就失败。 | 下一盘从剩余库存中随机预排，恰好匹配的暂存食物才会移入目标盘。 |
 
-<p align="center"><img src="public/about/media/gameplay-v1.9.0.jpg" alt="当前引擎初始关卡，离线渲染" width="32%"> <img src="public/about/media/gameplay-detail-v1.9.0.jpg" alt="当前引擎点击后的关卡，离线渲染" width="32%"> <img src="public/about/media/food-guide-v1.9.0.jpg" alt="28种清理后食物素材图鉴" width="32%"></p>
+<p align="center"><img src="public/about/media/gameplay-v1.10.0.jpg" alt="当前引擎初始关卡，离线渲染" width="32%"> <img src="public/about/media/gameplay-detail-v1.10.0.jpg" alt="当前引擎点击后的关卡，离线渲染" width="32%"> <img src="public/about/media/food-guide-v1.10.0.jpg" alt="28种清理后食物素材图鉴" width="32%"></p>
 
-<sub>演示素材：v1.9.0。由当前 GameEngine / FloatingScene 与游戏素材离线渲染；展示布局为绘图重现，不是浏览器截图或手机性能测试。</sub>
+<sub>演示素材：v1.10.0。由当前 GameEngine / FloatingScene 与游戏素材离线渲染；展示布局为绘图重现，不是浏览器截图或手机性能测试。</sub>
 
 ## 看它动起来
 
-[![当前引擎的漂动与点击演示](public/about/media/preview-v1.9.0.gif)](https://jiangyt1412.github.io/one-pot-game/about/#video)
+[![当前引擎的漂动与点击演示](public/about/media/preview-v1.10.0.gif)](https://jiangyt1412.github.io/one-pot-game/about/#video)
 
-**[播放完整视频 ↗](https://jiangyt1412.github.io/one-pot-game/about/#video)** · [MP4 文件](public/about/media/demo-v1.9.0.mp4)
+**[播放完整视频 ↗](https://jiangyt1412.github.io/one-pot-game/about/#video)** · [MP4 文件](public/about/media/demo-v1.10.0.mp4)
 
 视频按正常游戏时间推进，展示漂动、可见食物选择和点击后的局部补位。选择由脚本完成，位置通过食物像素轮廓核对；画面叠加演示指针，无声。
 
-## 这次更新 · v1.9.1
+## 这次更新 · v1.10.0
 
-- 修复 GitHub CI 中40秒运动模拟测试超过默认5秒时限的问题，单项时限设为15秒，保留全部断言。
-- 同步首页、简介与更新记录的 version；展示素材保留真实的 v1.9.0 来源版本，画面与玩法未改动。
+- 取消大食物固定居中的规则，按旋转后的食物轮廓随机分布。
+- 随机预排下一盘，轻微引导布局与点击后的近邻补位。
+- 加强拥挤锅边的碰撞求解，保留渐进漂动与补位。
+- 删除公开介绍中的个人姓名和相关口令说明。
+- 更新本版海报、图片、动图和视频，记录真实来源及 version。
 
-v1.9.0 加入 GitHub Pages 发布配置、子目录资源与离线缓存修复、图片视频简介和后续版本记录规则。
-
-[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.9.1.md) · [发布流程](docs/RELEASING.md)
+[完整更新记录](CHANGELOG.md) · [本版验证](docs/RELEASE_1.10.0.md) · [发布流程](docs/RELEASING.md)
 
 ## 打开就玩
 
 1. 用手机浏览器打开 **[一锅端](https://jiangyt1412.github.io/one-pot-game/)**，选择“开始游戏”。
 2. 优先收集目标盘需要的食物；其他食物会占用暂存格。
-3. 点击暂存锁与麦克风，说“蒋雨童最棒”，本关可增加一格。语音支持由浏览器与识别服务决定。
 
 首次在线成功加载后，游戏资源可离线缓存；简介媒体不加入游戏离线下载。清理网站数据会清除进度，其他设备不会自动同步。
 
